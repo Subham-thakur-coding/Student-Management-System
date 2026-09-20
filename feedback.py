@@ -5,7 +5,7 @@ class Feedback_CSV:
     def save_feedback(self):
         print("\n========== FEEDBACK ==========")
 
-        feedback = input("Please enter your experience or any suggestions for me: ")
+        feedback = input("Please write your experience or any suggestions for me: ")
 
         with open(
             "feedback.csv",
@@ -18,8 +18,9 @@ class Feedback_CSV:
 
             # Add heading if the file is empty
             if file.tell() == 0:
-                writer.writerow(["Feedback"])
+                writer.writerow(["Feedback : "])
 
             writer.writerow([feedback])
 
         print("\nThank you for your valuable feedback!")
+        print("\n**************** We appreciate your time and effort in helping us improve our system. ****************")

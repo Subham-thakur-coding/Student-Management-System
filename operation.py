@@ -226,7 +226,7 @@ class StudentOperation:
             con.commit()
             print("\nStudent added successfully!")
             print("\n*********** ALERT ***********")
-            print("You need to add course topic from main menu under the new course pannel!\n")
+            print("You need to add course topic from main menu under the new course portal!\n")
             print(f"New Student ID: {student_id}")
             print(f"Course ID: {course_id}")
         except sqlite3.OperationalError as error:

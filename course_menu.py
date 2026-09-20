@@ -11,7 +11,7 @@ class Course_menu:
         
         while True:
             print("-"*50)
-            print("\n*********** Welcome to course pannel ***********\n")
+            print("\n*********** Welcome to Course Portal ***********\n")
             print("-"*50)
             print("1. Dispaly Courses\n")
             print("2. Search Courses\n")

@@ -53,10 +53,19 @@ class Database:
                                 FOREIGN KEY(student_id) REFERENCES student_details(student_id)
                             )
                             """)
+            cursour.execute("""
+                            CREATE TABLE IF NOT EXISTS payment_details(
+                                payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                payment_status TEXT,
+                                amount REAL,
+                                student_id INTEGER NOT NULL,
+                                FOREIGN KEY (student_id) REFERENCES student_details(student_id)
+                            )
+                            """)
             con.commit()
             con.close()
             print("-"*50)
-            print("\n***************Connection Status with Database: ACTIVE!***************")
+            print("\n***Connection Status with Database: ACTIVE!***")
             print("-"*50)
             
         except sqlite3.OperationalError as error:
@@ -64,3 +73,4 @@ class Database:
             print("\n***************Connection Status with Database: DISCONNECT!***************")
             print("-"*50)
             print(f"{error}")
+            

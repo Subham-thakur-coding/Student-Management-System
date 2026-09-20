@@ -7,6 +7,8 @@ from student_update import Update_student
 from delete import Delete
 from course_menu import Course_menu
 from feedback import Feedback_CSV
+from admission_payment_menu import Admission_Payment_menu
+from table_csv import Table_CSV
 class Menu:
     def __init__(self):
         self.db= Database()
@@ -18,6 +20,8 @@ class Menu:
         self.delete= Delete()
         self.c_menu= Course_menu()
         self.feedback= Feedback_CSV()
+        self.a_p_menu = Admission_Payment_menu()
+        self.data_csv = Table_CSV()
 
     # Add admin
     def add_admin(self):
@@ -139,9 +143,15 @@ class Menu:
             print("-"*50)
             print("5. Delete Student") 
             print("-"*50)
-            print("6. Course Pannel")
+            print("6. Course Portal")
             print("-"*50)
-            print("7. Log out")
+            print("7. Admission / Payment Portal")
+            print("-"*50)
+            print("8. Export Table to CSV")
+            print("-"*50)
+            print("9. Forgot Password")
+            print("-"*50)
+            print("10. Log out")
             print("=" * 50) 
             choice: int = int(input("Enter your choice: ")) 
             if choice == 1:
@@ -157,6 +167,12 @@ class Menu:
             elif choice == 6:
                 self.c_menu.course_menu()
             elif choice == 7:
+                self.a_p_menu.menu()
+            elif choice == 8:
+                self.data_csv.export_csv()
+            elif choice == 9:
+                print("Comming Soon!")
+            elif choice == 10:
                 print("Logout successfully! THANK YOU")
                 break
             else:

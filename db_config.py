@@ -27,7 +27,8 @@ class Database:
                             CREATE TABLE IF NOT EXISTS student_course(
                                 course_id INTEGER PRIMARY KEY AUTOINCREMENT,
                                 course_name TEXT NOT NULL,
-                                course_duration TEXT NOT NULL
+                                course_duration TEXT NOT NULL,
+                                course_topic TEXT
                             )
                             """)
             # 4. Student details table

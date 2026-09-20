@@ -1,217 +1,208 @@
-# 🎓 Student Management System — Version 2.0
+# Student Management System
 
-A **Python-based Student Management System** built using **Object-Oriented Programming (OOP)** and **SQLite**. The application provides a console-based interface for managing students, courses, and admission information.
+A menu-driven **Student Management System** built with **Python and SQLite**.
+The project demonstrates practical use of **Object-Oriented Programming (OOP), SQLite database management, CSV file handling, validation, modular programming, and CRUD operations**.
 
-Version 2.0 introduces a separate **Course Management Panel** and an **Exit Feedback System** using CSV and Python Context Managers.
+## 🚀 Version 2.2 Beta
+
+Version **2.2 Beta** extends the previous 2.0 Beta version with **Admission Management, Payment Database support, and Database-to-CSV export functionality**.
 
 ---
 
-## 🚀 Features
+## ✨ Features
+
+### 🔐 Admin Authentication
+
+* Admin login system
+* Add new admin credentials
+* Password validation
+* Secure access to the student management system
 
 ### 👨‍🎓 Student Management
 
 * Add new students
-* Display student records
-* Search students by ID
+* Display student details
+* Search students
 * Update student information
 * Delete student records
-* Manage admission status
+* Automatic Student ID generation
+* Course assignment for students
 
-### 📚 Course Management Panel
+### 📚 Course Portal
 
-A separate panel is available for course-related operations:
-
-* Display all courses
-* Search courses by Course ID
+* Display all available courses
+* Search course by Course ID
 * Add course topics
-* View course information
+* Manage course-related information
+* Automatic Course ID generation when required
 
-### 🔐 Authentication
+### 🎓 Admission Management
 
-* User authentication
-* User ID and password validation
-* Regular expression-based validation
+Version 2.2 Beta introduces a dedicated **Admission & Payment Portal**.
 
-### 💬 Exit Feedback
+Admission features include:
+
+* Display all admission details
+* Search admission information using Student ID
+* Modify admission status
+* Supported admission statuses:
+
+  * Pending
+  * Approved
+  * Rejected
+
+### 💳 Payment Database Support
+
+A new `payment_details` table has been added to prepare the system for payment management.
+
+The table stores:
+
+* Payment ID
+* Payment Status
+* Payment Amount
+* Student ID
+
+The Payment module is currently under development and will be expanded in a future version.
+
+### 📊 Export Database Tables to CSV
+
+A new **Export Table to CSV** feature has been added.
+
+The system:
+
+1. Displays all available SQLite tables.
+2. Allows the user to select a table.
+3. Retrieves the table data.
+4. Automatically creates a CSV file using the table name.
+5. Exports column names and table records.
+6. Prevents creation of a duplicate CSV file if the same file already exists.
+
+For example:
+
+```text
+student_details → student_details.csv
+student_course → student_course.csv
+student_admission → student_admission.csv
+payment_details → payment_details.csv
+```
+
+### 📝 Feedback System
 
 When the user exits the application:
 
-1. A thank-you message is displayed.
-2. The user is asked to provide feedback.
-3. Feedback is stored in a CSV file.
-4. A Python Context Manager is used for safe file handling.
+* A feedback form is displayed.
+* User feedback is stored in a CSV file.
+* CSV handling is implemented using a context manager.
+* A feedback header is automatically added when the file is created.
 
-### 💾 Data Management
+### 🔮 Forgot Password
 
-* SQLite database
-* CSV file handling
-* JSON data handling
-* SQL queries and joins
-* Dictionary-based data processing
+A **Forgot Password** option has been added to the main menu.
 
----
-
-## 🛠️ Technologies Used
-
-| Technology              | Purpose                 |
-| ----------------------- | ----------------------- |
-| **Python**              | Application development |
-| **SQLite**              | Database management     |
-| **SQL**                 | Database operations     |
-| **OOP**                 | Code structure          |
-| **Regular Expressions** | Input validation        |
-| **CSV**                 | Feedback storage        |
-| **JSON**                | Data processing         |
-| **Context Manager**     | Safe file handling      |
+> Currently this feature is a placeholder and will be implemented in a future version.
 
 ---
 
 ## 🗄️ Database Structure
 
-The project uses SQLite with the following main tables:
+The application uses SQLite with the following main tables:
 
-### `user_auth`
+| Table               | Purpose                        |
+| ------------------- | ------------------------------ |
+| `user_auth`         | Stores admin login credentials |
+| `student_course`    | Stores course information      |
+| `student_details`   | Stores student information     |
+| `student_admission` | Stores admission status        |
+| `payment_details`   | Stores payment information     |
 
-Stores authentication information.
-
-### `student_details`
-
-Stores student personal and educational information.
-
-### `student_course`
-
-Stores course information including:
-
-* Course ID
-* Course name
-* Course duration
-* Course topic
-
-### `student_admission`
-
-Stores student admission status.
-
-The tables are related through `student_id` and `course_id`.
-
----
-
-## 📚 Course Management
-
-Version 2.0 separates course operations from the main student operations.
-
-The Course Panel allows users to:
-
-* Display all available courses
-* Search for a course using its ID
-* Add or update course topics
-* View course details
-
-This provides a dedicated area for managing course-related information.
-
----
-
-## 💬 Feedback System
-
-The application now collects user feedback when the program is closed.
-
-Feedback is stored in a CSV file using Python's `csv` module.
-
-A **Context Manager** is used to handle the file:
-
-```python
-with open("feedback.csv", "a", newline="") as file:
-    # Store feedback
-```
-
-Using a context manager ensures that the file is automatically closed after the operation.
-
----
-
-## ✅ Input Validation
-
-The application uses **Regular Expressions (****`re`****)** and custom validation functions to validate user input.
-
-Validation includes:
-
-* Student name
-* Date of birth
-* Address
-* Qualification
-* Course name
-* Course duration
-* Course topic
-* User ID
-* Password
-* Menu options
-* Yes/No inputs
-
----
-
-## 🧠 Concepts Practiced
-
-### Python
-
-* Functions
-* Loops
-* Conditional statements
-* Exception handling
-* Modules
-* File handling
-* Type hints
-
-### OOP
-
-* Classes
-* Objects
-* Constructors
-* Methods
-* Encapsulation
-* Modular programming
-
-### SQLite & SQL
-
-* Database connection
-* CRUD operations
-* `INSERT`
-* `SELECT`
-* `UPDATE`
-* `DELETE`
-* `JOIN`
-* Primary keys
-* Foreign keys
-* Transactions
-
-### File Handling
-
-* CSV
-* JSON
-* Context Managers
-
----
-
-## 📂 Project Structure
+### Table Relationships
 
 ```text
-Student-Management-System/
+student_course
+      │
+      │ course_id
+      ▼
+student_details
+      │
+      ├──────────────► student_admission
+      │                  student_id
+      │
+      └──────────────► payment_details
+                         student_id
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+student_database_sqlite/
 │
 ├── main.py
 ├── db_config.py
+├── operation.py
 ├── validation.py
 │
-├── StudentJSON.py
-├── StudentCSV.py
+├── dispaly_student.py
+├── search_student.py
+├── student_update.py
+├── update_personal.py
+├── update_all_details.py
+├── delete.py
 │
-├── database/
-│   └── student.db
+├── course_menu.py
+├── display_course.py
+├── search_course.py
+├── update_course_topic.py
 │
-├── feedback/
-│   └── feedback.csv
+├── admission_payment_menu.py
+├── admission_menu.py
+├── display_admission.py
+├── modify_admission.py
 │
-├── README.md
-└── requirements.txt
+├── table_csv.py
+├── feedback.py
+│
+├── student_DB.db
+├── feedback.csv
+├── .gitignore
+└── README.md
 ```
 
-> The exact file structure may vary depending on the current implementation.
+---
+
+## 🆕 Changes from Version 2.0 Beta
+
+### Version 2.2 Beta adds:
+
+| Feature                       | Version 2.0 Beta | Version 2.2 Beta |
+| ----------------------------- | ---------------- | ---------------- |
+| Student Management            | ✅                | ✅                |
+| Course Portal                 | ✅                | ✅                |
+| Feedback System               | ✅                | ✅ Improved       |
+| Admission Management          | ❌                | ✅                |
+| Admission Status Modification | ❌                | ✅                |
+| Payment Table                 | ❌                | ✅                |
+| Payment Management            | ❌                | 🔄 Coming Soon   |
+| Export SQLite Table to CSV    | ❌                | ✅                |
+| Duplicate CSV Protection      | ❌                | ✅                |
+| Admission & Payment Portal    | ❌                | ✅                |
+| Forgot Password Option        | ❌                | 🔄 Coming Soon   |
+| Course Panel renamed          | Panel            | Course Portal    |
+
+---
+
+## 🛠️ Technologies Used
+
+* **Python 3**
+* **SQLite3**
+* **CSV**
+* **Object-Oriented Programming**
+* **Regular Expressions**
+* **Context Managers**
+* **Exception Handling**
+* **CRUD Operations**
+* **Modular Programming**
 
 ---
 
@@ -220,13 +211,13 @@ Student-Management-System/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/Student-Management-System.git
+git clone <your-repository-url>
 ```
 
-### 2. Open the project directory
+### 2. Open the project folder
 
 ```bash
-cd Student-Management-System
+cd student_database_sqlite
 ```
 
 ### 3. Run the application
@@ -235,29 +226,63 @@ cd Student-Management-System
 python main.py
 ```
 
+The SQLite database and required tables are created automatically when the application initializes the database.
+
+---
+
+## 🔑 Default Admin Login
+
+```text
+User ID: admin
+Password: admin123
+```
+
+You can add additional admin credentials through the application's admin option.
+
 ---
 
 ## 🎯 Learning Objectives
 
-This project was developed to practice building a real-world console application using Python and SQLite.
+This project was developed as a practical Python project to strengthen understanding of:
 
-The project combines:
-
-**Python → OOP → Validation → SQLite → SQL → CRUD → Course Management → CSV → Context Managers**
+* Python OOP
+* Classes and objects
+* SQLite database connectivity
+* SQL queries
+* Foreign keys
+* CRUD operations
+* Menu-driven applications
+* Regular expression validation
+* CSV file operations
+* Context managers
+* Exception handling
+* Modular Python programming
+* Database relationships
+* Exporting database information to external files
 
 ---
 
 ## 🔮 Future Improvements
 
-* Convert the application into a Django web application
-* Add Admin and User roles
-* Improve authentication and authorization
-* Add reports and analytics
-* Export data to Excel
-* Build a graphical user interface
-* Create REST APIs
-* Add AI/Generative AI features
-* Connect to a cloud database
+Planned features for upcoming versions include:
+
+* Complete payment management
+* Payment status updates
+* Payment history
+* Forgot Password functionality
+* Improved input validation
+* Better error handling
+* Enhanced user interface
+* Additional reports and data export options
+
+---
+
+## 📌 Project Status
+
+**Version:** 2.2 Beta
+**Status:** 🧪 Beta / Under Development
+
+This project is continuously being improved as new Python, SQLite, OOP, and database concepts are learned and implemented.
 
 ---
 
@@ -266,20 +291,4 @@ The project combines:
 **Subham Thakur**
 
 Python Full Stack Development Learner
-
-**Technologies:**
-`Python` `OOP` `SQLite` `SQL` `Regex` `CSV` `JSON`
-
----
-
-## ⭐ Project Status
-
-**Version 2.0 — Beta 👨‍💻**
-
-The project is continuously improved as new Python, database, and software development concepts are learned and implemented.
-
----
-
-## 📜 License
-
-This project is created for **learning and educational purposes**.
+Interested in Python, Django, Web Development, Databases, and Generative AI.

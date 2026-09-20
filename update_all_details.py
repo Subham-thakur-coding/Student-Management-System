@@ -91,7 +91,7 @@ class Update_all_Details:
                 
         # Course Duration
         while True:
-            course_duration: str = input("Enter Course Duration: ")
+            course_duration: str = input("Enter Course Duration (1-9 months): ")
             if Validation.validate_course_duration(course_duration):
                 break
             else:

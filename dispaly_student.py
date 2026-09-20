@@ -60,5 +60,5 @@ class Display_student:
                 f"{education:<15}"
                 f"{course if course else 'N/A':<20}"
                 f"{duration if duration else 'N/A':<12}"
-                f"{status if status else 'N/A':<2}"
+                f"{status if status else 'N/A':<2}\n"
             )

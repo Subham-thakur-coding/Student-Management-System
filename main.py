@@ -5,6 +5,8 @@ from dispaly_student import Display_student
 from search_student import Serach_student
 from student_update import Update_student
 from delete import Delete
+from course_menu import Course_menu
+from feedback import Feedback_CSV
 class Menu:
     def __init__(self):
         self.db= Database()
@@ -14,6 +16,8 @@ class Menu:
         self.search= Serach_student()
         self.update= Update_student()
         self.delete= Delete()
+        self.c_menu= Course_menu()
+        self.feedback= Feedback_CSV()
 
     # Add admin
     def add_admin(self):
@@ -66,7 +70,7 @@ class Menu:
             fetch = self.operation.login(user_id, password)
             
             if fetch:
-                print("\nLogin Successful!")
+                print("\n***********Login Successfully!***********")
                 print(f"User ID: {user_id}")
                 print("\nWelcome to Student Management System")
                 return True
@@ -114,42 +118,51 @@ class Menu:
                 self.remove_admin()
             elif choice == 4:
                 print("\nThank you for using Student Management System!")
+                self.feedback.save_feedback()
                 break
             else:
                 print("\nInvalid choice! Please choose 1-3.")
     # Main Menu
     def main_menu(self):
-        print("\n")
-        print("=" * 50)
-        print(" MAIN MENU")
-        print("=" * 50)
-        print("1. Add Student")
-        print("-"*50)
-        print("2. Display Students")
-        print("-"*50)
-        print("3. Search Student") 
-        print("-"*50)
-        print("4. Update Student")
-        print("-"*50)
-        print("5. Delete Student") 
-        print("-"*50)
-        print("6. Exit")
-        print("=" * 50) 
-        choice: int = int(input("Enter your choice: ")) 
-        if choice == 1:
-            self.operation.add_student()
-        elif choice == 2:
-            self.display.display_student()
-        elif choice == 3:
-            self.search.search_student()
-        elif choice == 4:
-            self.update.update_details()
-        elif choice == 5:
-            self.delete.delete_student()
-        else:
-            print("*"*50)
-            print("INVALID CHOICE!")
-            print("*"*50)
+        while True:
+            print("\n")
+            print("=" * 50)
+            print(" MAIN MENU")
+            print("=" * 50)
+            print("1. Add Student")
+            print("-"*50)
+            print("2. Display Students")
+            print("-"*50)
+            print("3. Search Student") 
+            print("-"*50)
+            print("4. Update Student")
+            print("-"*50)
+            print("5. Delete Student") 
+            print("-"*50)
+            print("6. Course Pannel")
+            print("-"*50)
+            print("7. Log out")
+            print("=" * 50) 
+            choice: int = int(input("Enter your choice: ")) 
+            if choice == 1:
+                self.operation.add_student()
+            elif choice == 2:
+                self.display.display_student()
+            elif choice == 3:
+                self.search.search_student()
+            elif choice == 4:
+                self.update.update_details()
+            elif choice == 5:
+                self.delete.delete_student()
+            elif choice == 6:
+                self.c_menu.course_menu()
+            elif choice == 7:
+                print("Logout successfully! THANK YOU")
+                break
+            else:
+                print("*"*50)
+                print("INVALID CHOICE!")
+                print("*"*50)
     # After login part
     def start_program(self):
         self.db.create_table()

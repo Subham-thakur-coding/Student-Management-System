@@ -66,27 +66,27 @@ class Validation:
 
     # ---------------- OPTION VALIDATION ----------------
 
-    @staticmethod
-    def validate_option(option):
+    # @staticmethod
+    # def validate_option(option):
 
-        pattern = r"^[1-9]$"
+    #     pattern = r"^[1-9]$"
 
-        if re.fullmatch(pattern, option):
-            return True
+    #     if re.fullmatch(pattern, option):
+    #         return True
 
-        return False
+    #     return False
 
     # ---------------- YES / NO VALIDATION ----------------
 
-    @staticmethod
-    def validate_yes_no(value):
+    # @staticmethod
+    # def validate_yes_no(value):
 
-        pattern = r"^(Yes|No)$"
+    #     pattern = r"^(Yes|No)$"
 
-        if re.fullmatch(pattern, value, re.IGNORECASE):
-            return True
+    #     if re.fullmatch(pattern, value, re.IGNORECASE):
+    #         return True
 
-        return False
+    #     return False
     
     # ---------------- ADDRESS VALIDATION ----------------
     @staticmethod
@@ -99,7 +99,7 @@ class Validation:
     # ---------------- COURSE DURATION VALIDATION ----------------
     @staticmethod 
     def validate_course_duration(course_duration): 
-        pattern = r"^[1-9]$" 
+        pattern = r"^[1-9] (month|months)$" 
         if re.fullmatch(pattern, course_duration): 
             return True 
         return False
@@ -153,3 +153,13 @@ class Validation:
             return False
 
         return True
+    
+    # ---------------- COURSE TOPIC VALIDATION ----------------
+    @staticmethod
+    def validate_course_topic(course_topic):
+        pattern = r"^[A-Za-z, ]+$"
+
+        if re.fullmatch(pattern, course_topic):
+            return True
+
+        return False

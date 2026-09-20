@@ -56,8 +56,11 @@ class Database:
             con.commit()
             con.close()
             print("-"*50)
-            print("Connection Status with Database: ACTIVE")
+            print("\n***************Connection Status with Database: ACTIVE!***************")
             print("-"*50)
             
         except sqlite3.OperationalError as error:
-            print(f"Try again! Database status: {error}")
+            print("-"*50)
+            print("\n***************Connection Status with Database: DISCONNECT!***************")
+            print("-"*50)
+            print(f"{error}")

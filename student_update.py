@@ -29,7 +29,7 @@ class Update_student:
             print("="*40)
             print("1. Update all details")
             print("2. Update student's Personal Details")
-            print("3. Exit")
+            print("3. Back to Main Menu")
             
             choice: int = int(input("Enter your choice [1-3]: "))
             
@@ -38,7 +38,6 @@ class Update_student:
             elif choice == 2:
                 self.personal.update_personal()
             elif choice == 3:
-                print("Thank you!")
                 break
             else:
                 print("Invalid Input, TRY AGAIN!")

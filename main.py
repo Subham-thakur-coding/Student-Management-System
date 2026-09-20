@@ -5,6 +5,8 @@ from dispaly_student import Display_student
 from search_student import Serach_student
 from student_update import Update_student
 from delete import Delete
+from course_menu import Course_menu
+from feedback import Feedback_CSV
 class Menu:
     def __init__(self):
         self.db= Database()
@@ -14,6 +16,8 @@ class Menu:
         self.search= Serach_student()
         self.update= Update_student()
         self.delete= Delete()
+        self.c_menu= Course_menu()
+        self.feedback= Feedback_CSV()
 
     # Add admin
     def add_admin(self):
@@ -66,7 +70,7 @@ class Menu:
             fetch = self.operation.login(user_id, password)
             
             if fetch:
-                print("\nLogin Successful!")
+                print("\n***********Login Successfully!***********")
                 print(f"User ID: {user_id}")
                 print("\nWelcome to Student Management System")
                 return True
@@ -114,6 +118,7 @@ class Menu:
                 self.remove_admin()
             elif choice == 4:
                 print("\nThank you for using Student Management System!")
+                self.feedback.save_feedback()
                 break
             else:
                 print("\nInvalid choice! Please choose 1-3.")
@@ -150,7 +155,7 @@ class Menu:
             elif choice == 5:
                 self.delete.delete_student()
             elif choice == 6:
-                print("Comming Soon!")
+                self.c_menu.course_menu()
             elif choice == 7:
                 print("Logout successfully! THANK YOU")
                 break

@@ -54,7 +54,7 @@ class StudentOperation:
                     writer.writerow(["user_id", "password"])
                 writer.writerow([user_id, password])
                 print("Admin details request saved in CSV file")
-                print("After some time it will added in database. THANK YOU!")
+                print("\nAfter sometime it will be automatically  added in database when data base is active!. THANK YOU!")
                 print("-"*40)
             return True
 
@@ -176,7 +176,7 @@ class StudentOperation:
                 
         # Course Duration
         while True:
-            course_duration: str = input("Enter Course Duration: ")
+            course_duration: str = input("Enter Course Duration (1-9 months): ")
             if Validation.validate_course_duration(course_duration):
                 break
             else:
@@ -224,11 +224,13 @@ class StudentOperation:
                         VALUES(?, ?)
                         """,(student_id, admission))
             con.commit()
-            con.close()
             print("\nStudent added successfully!")
-            print(f"Student ID: {student_id}")
+            print("\n*********** ALERT ***********")
+            print("You need to add course topic from main menu under the new course pannel!\n")
+            print(f"New Student ID: {student_id}")
             print(f"Course ID: {course_id}")
         except sqlite3.OperationalError as error:
+            con.close()
             print("-"*50)
             print(f"!!SOME OPERATIONAL ISSUE HAPPEN!! ERROR CODE:{error}")
             print("-"*50)

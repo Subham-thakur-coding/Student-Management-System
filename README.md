@@ -1,139 +1,280 @@
-# Student Management System
+# 🎓 Student Management System
 
-A menu-driven **Student Management System** built with **Python and SQLite**.
-The project demonstrates practical use of **Object-Oriented Programming (OOP), SQLite database management, CSV file handling, validation, modular programming, and CRUD operations**.
+A **menu-driven Student Management System** built using **Python and SQLite**.
 
-## 🚀 Version 2.2 Beta
-
-Version **2.2 Beta** extends the previous 2.0 Beta version with **Admission Management, Payment Database support, and Database-to-CSV export functionality**.
+This project demonstrates practical implementation of **Object-Oriented Programming, SQLite database management, CRUD operations, CSV handling, input validation, modular programming, context managers, and database relationships**.
 
 ---
 
-## ✨ Features
+# 🚀 Version 2.0 - Stable
 
-### 🔐 Admin Authentication
+**Status:** ✅ Stable Release
+**Version:** `2.0 - Stable`
+**Technology:** Python + SQLite
+**Project Type:** Console-Based Database Application
 
-* Admin login system
-* Add new admin credentials
-* Password validation
-* Secure access to the student management system
+Version 2.0 is the stable release of the second major development phase of the project.
 
-### 👨‍🎓 Student Management
+This version includes **Student Management, Course Management, Admission Management, Payment Database Structure, Database-to-CSV Export, Admin Authentication, and Feedback Management**.
 
-* Add new students
-* Display student details
-* Search students
-* Update student information
-* Delete student records
+---
+
+# ✨ Features
+
+## 🔐 Admin Authentication
+
+The system provides an authentication system for administrators.
+
+Features include:
+
+* Admin Login
+* Add Admin
+* Login Validation
+* Default Admin Account
+* Admin Data Handling
+
+---
+
+# 👨‍🎓 Student Management
+
+The core Student Management functionality includes:
+
+* Add Student
+* Display Student
+* Search Student
+* Update Student
+* Delete Student
 * Automatic Student ID generation
-* Course assignment for students
+* Student course assignment
+* Automatic admission record creation
 
-### 📚 Course Portal
+Student information includes:
 
-* Display all available courses
-* Search course by Course ID
-* Add course topics
-* Manage course-related information
-* Automatic Course ID generation when required
-
-### 🎓 Admission Management
-
-Version 2.2 Beta introduces a dedicated **Admission & Payment Portal**.
-
-Admission features include:
-
-* Display all admission details
-* Search admission information using Student ID
-* Modify admission status
-* Supported admission statuses:
-
-  * Pending
-  * Approved
-  * Rejected
-
-### 💳 Payment Database Support
-
-A new `payment_details` table has been added to prepare the system for payment management.
-
-The table stores:
-
-* Payment ID
-* Payment Status
-* Payment Amount
 * Student ID
+* Student Name
+* Date of Birth
+* Student Address
+* Student Education
+* Course ID
 
-The Payment module is currently under development and will be expanded in a future version.
+---
 
-### 📊 Export Database Tables to CSV
+# 📚 Course Portal
 
-A new **Export Table to CSV** feature has been added.
+The **Course Portal** provides course-related management functionality.
 
-The system:
+### Available Options
 
-1. Displays all available SQLite tables.
-2. Allows the user to select a table.
-3. Retrieves the table data.
-4. Automatically creates a CSV file using the table name.
-5. Exports column names and table records.
-6. Prevents creation of a duplicate CSV file if the same file already exists.
+* Display Courses
+* Search Course
+* Update Course Topic
+* Return to Main Menu
 
-For example:
+Course information includes:
+
+* Course ID
+* Course Name
+* Course Duration
+* Course Topic
+
+The Course ID connects `student_details` with `student_course`.
+
+---
+
+# 🎓 Admission / Payment Portal
+
+The application contains a separate **Admission / Payment Portal**.
 
 ```text
-student_details → student_details.csv
+Admission / Payment Portal
+│
+├── 1. Admission Work
+│   ├── Display All Admission Details
+│   └── Modify Admission Details
+│
+├── 2. Payment Work
+│   └── Coming Soon
+│
+└── 3. Back to Main Menu
+```
+
+## Admission Work
+
+The Admission Work section provides:
+
+* Display All Admission Details
+* Modify Admission Details
+* Update Admission Status
+
+Supported admission statuses:
+
+```text
+Pending
+Approved
+Rejected
+```
+
+---
+
+# 💳 Payment Details
+
+Version 2.0 introduces a new **`payment_details`** table to prepare the application for future payment management.
+
+### `payment_details`
+
+| Column           | Description        |
+| ---------------- | ------------------ |
+| `payment_id`     | Unique Payment ID  |
+| `payment_status` | Payment status     |
+| `amount`         | Payment amount     |
+| `student_id`     | Related Student ID |
+
+The **Payment Work** option is currently reserved for future development.
+
+---
+
+# 📊 Export Table to CSV
+
+The **Export Table to CSV** feature allows database table information to be exported into CSV files.
+
+### Process
+
+1. Select **Export Table to CSV** from the Main Menu.
+2. The application displays the available database tables.
+3. Select the required table.
+4. The selected table data is exported to a CSV file.
+5. Column names are included automatically.
+6. If the CSV file already exists, the application does not overwrite it.
+
+### Available Database Tables
+
+```text
+1. user_auth
+2. student_course
+3. student_details
+4. student_admission
+5. payment_details
+```
+
+Example exports:
+
+```text
+user_auth → user_auth.csv
 student_course → student_course.csv
+student_details → student_details.csv
 student_admission → student_admission.csv
 payment_details → payment_details.csv
 ```
 
-### 📝 Feedback System
-
-When the user exits the application:
-
-* A feedback form is displayed.
-* User feedback is stored in a CSV file.
-* CSV handling is implemented using a context manager.
-* A feedback header is automatically added when the file is created.
-
-### 🔮 Forgot Password
-
-A **Forgot Password** option has been added to the main menu.
-
-> Currently this feature is a placeholder and will be implemented in a future version.
-
 ---
 
-## 🗄️ Database Structure
+# 📝 Feedback System
 
-The application uses SQLite with the following main tables:
+The application provides a feedback option when the user chooses to exit the program.
 
-| Table               | Purpose                        |
-| ------------------- | ------------------------------ |
-| `user_auth`         | Stores admin login credentials |
-| `student_course`    | Stores course information      |
-| `student_details`   | Stores student information     |
-| `student_admission` | Stores admission status        |
-| `payment_details`   | Stores payment information     |
+The feedback system:
 
-### Table Relationships
+* Accepts user feedback
+* Stores feedback in `feedback.csv`
+* Uses CSV file handling
+* Uses a context manager for file operations
+* Adds the CSV header when required
+
+Example:
 
 ```text
-student_course
-      │
-      │ course_id
-      ▼
-student_details
-      │
-      ├──────────────► student_admission
-      │                  student_id
-      │
-      └──────────────► payment_details
-                         student_id
+Feedback :
+System is easy to use.
 ```
+
+> `feedback.csv` is a CSV file and is **not a SQLite database table**.
 
 ---
 
-## 📁 Project Structure
+# 🔑 Forgot Password
+
+The Main Menu includes:
+
+```text
+9. Forgot Password
+```
+
+The current functionality displays:
+
+```text
+Coming Soon!
+```
+
+This feature is reserved for future authentication improvements.
+
+---
+
+# 🗄️ Database Structure
+
+The application uses **SQLite** as its database.
+
+## Database Tables
+
+| Table Name          | Purpose                                |
+| ------------------- | -------------------------------------- |
+| `user_auth`         | Stores administrator login credentials |
+| `student_course`    | Stores course information              |
+| `student_details`   | Stores student information             |
+| `student_admission` | Stores admission information           |
+| `payment_details`   | Stores payment information             |
+
+---
+
+## 🔗 Database Relationships
+
+```text
+┌────────────────────┐
+│   student_course   │
+│                    │
+│ course_id (PK)     │
+│ course_name        │
+│ course_duration    │
+│ course_topic       │
+└─────────┬──────────┘
+          │
+          │ course_id
+          ▼
+┌────────────────────┐
+│   student_details  │
+│                    │
+│ student_id (PK)    │
+│ student_name       │
+│ student_dob        │
+│ student_adress     │
+│ student_education  │
+│ course_id (FK)     │
+└─────────┬──────────┘
+          │
+     ┌────┴─────┐
+     │          │
+     ▼          ▼
+┌────────────┐  ┌─────────────────┐
+│ student_   │  │ payment_details │
+│ admission  │  │                 │
+│            │  │ payment_id (PK) │
+│ admission_ │  │ student_id (FK) │
+│ id (PK)    │  │ payment_status  │
+│ student_id │  │ amount          │
+│ (FK)       │  └─────────────────┘
+│ admission_ │
+│ status     │
+└────────────┘
+```
+
+### Foreign Key Relationships
+
+* `student_details.course_id` → `student_course.course_id`
+* `student_admission.student_id` → `student_details.student_id`
+* `payment_details.student_id` → `student_details.student_id`
+
+---
+
+# 📁 Project Structure
 
 ```text
 student_database_sqlite/
@@ -165,34 +306,15 @@ student_database_sqlite/
 │
 ├── student_DB.db
 ├── feedback.csv
+├── student_details.csv
+│
 ├── .gitignore
 └── README.md
 ```
 
 ---
 
-## 🆕 Changes from Version 2.0 Beta
-
-### Version 2.2 Beta adds:
-
-| Feature                       | Version 2.0 Beta | Version 2.2 Beta |
-| ----------------------------- | ---------------- | ---------------- |
-| Student Management            | ✅                | ✅                |
-| Course Portal                 | ✅                | ✅                |
-| Feedback System               | ✅                | ✅ Improved       |
-| Admission Management          | ❌                | ✅                |
-| Admission Status Modification | ❌                | ✅                |
-| Payment Table                 | ❌                | ✅                |
-| Payment Management            | ❌                | 🔄 Coming Soon   |
-| Export SQLite Table to CSV    | ❌                | ✅                |
-| Duplicate CSV Protection      | ❌                | ✅                |
-| Admission & Payment Portal    | ❌                | ✅                |
-| Forgot Password Option        | ❌                | 🔄 Coming Soon   |
-| Course Panel renamed          | Panel            | Course Portal    |
-
----
-
-## 🛠️ Technologies Used
+# 🛠️ Technologies Used
 
 * **Python 3**
 * **SQLite3**
@@ -202,93 +324,226 @@ student_database_sqlite/
 * **Context Managers**
 * **Exception Handling**
 * **CRUD Operations**
+* **File Handling**
+* **SQL**
+* **Foreign Keys**
 * **Modular Programming**
 
 ---
 
-## ▶️ How to Run
+# ▶️ How to Run
 
-### 1. Clone the repository
+## 1. Clone the Repository
 
 ```bash
 git clone <your-repository-url>
 ```
 
-### 2. Open the project folder
+## 2. Open the Project
 
 ```bash
 cd student_database_sqlite
 ```
 
-### 3. Run the application
+## 3. Run the Application
 
 ```bash
 python main.py
 ```
 
-The SQLite database and required tables are created automatically when the application initializes the database.
+The application creates the required SQLite database tables when the database is initialized.
 
 ---
 
-## 🔑 Default Admin Login
+# 🔑 Default Admin Account
+
+The application provides a default administrator account:
 
 ```text
 User ID: admin
 Password: admin123
 ```
 
-You can add additional admin credentials through the application's admin option.
+---
+
+# 📋 Main Menu
+
+The Version 2.0 Stable application contains:
+
+```text
+==================================================
+                    MAIN MENU
+==================================================
+
+1. Add Student
+2. Display Student
+3. Search Student
+4. Update Student
+5. Delete Student
+6. Course Portal
+7. Admission / Payment Portal
+8. Export Table to CSV
+9. Forgot Password
+10. Log out
+```
 
 ---
 
-## 🎯 Learning Objectives
+# 📚 Course Portal Menu
 
-This project was developed as a practical Python project to strengthen understanding of:
+```text
+--------------------------------------------------
+                  Course Portal
+--------------------------------------------------
 
-* Python OOP
-* Classes and objects
-* SQLite database connectivity
-* SQL queries
-* Foreign keys
-* CRUD operations
-* Menu-driven applications
-* Regular expression validation
-* CSV file operations
-* Context managers
-* Exception handling
-* Modular Python programming
-* Database relationships
-* Exporting database information to external files
+1. Display Courses
+2. Search Course
+3. Update Course Topic
+4. Back to Main Menu
+```
 
 ---
 
-## 🔮 Future Improvements
+# 🎓 Admission / Payment Portal Menu
 
-Planned features for upcoming versions include:
+```text
+--------------------------------------------------
+          Admission / Payment Portal
+--------------------------------------------------
 
-* Complete payment management
-* Payment status updates
-* Payment history
-* Forgot Password functionality
-* Improved input validation
-* Better error handling
-* Enhanced user interface
-* Additional reports and data export options
+1. Admission Work
+2. Payment Work
+3. Back to Main Menu
+```
+
+### Admission Menu
+
+```text
+--------------------------------------------------
+                 Admission Menu
+--------------------------------------------------
+
+1. Display All Admission Details
+2. Modify Admission Details
+3. Back to Previous Menu
+```
 
 ---
 
-## 📌 Project Status
+# 🎯 Learning Objectives
 
-**Version:** 2.2 Beta
-**Status:** 🧪 Beta / Under Development
+This project was created as a practical Python project to understand how a database-driven application can be developed.
 
-This project is continuously being improved as new Python, SQLite, OOP, and database concepts are learned and implemented.
+The project demonstrates:
+
+* Python Classes and Objects
+* Object-Oriented Programming
+* SQLite Database Connectivity
+* SQL Queries
+* Database Tables
+* Primary Keys
+* Foreign Keys
+* Database Relationships
+* CRUD Operations
+* Input Validation
+* Regular Expressions
+* CSV File Handling
+* Context Managers
+* Exception Handling
+* Modular Programming
+* Database-to-CSV Export
+* Menu-Driven Application Development
 
 ---
 
-## 👨‍💻 Author
+# 🔄 Version 2.0 Highlights
+
+### Added
+
+* ✅ Course Portal
+* ✅ Course Search
+* ✅ Course Topic Management
+* ✅ Admission Management
+* ✅ Admission Status Modification
+* ✅ Admission / Payment Portal
+* ✅ `payment_details` Table
+* ✅ Export Table to CSV
+* ✅ Database Table Selection
+* ✅ Duplicate CSV Protection
+* ✅ Feedback CSV System
+* ✅ Context Manager for Feedback
+* ✅ Forgot Password Menu Option
+
+### Maintained
+
+* ✅ Student CRUD Operations
+* ✅ Admin Authentication
+* ✅ Student Validation
+* ✅ SQLite Database
+* ✅ Course Assignment
+* ✅ Modular Project Structure
+
+---
+
+# 📌 Project Status
+
+## ✅ Version 2.0 - Stable
+
+Version 2.0 is the **stable release of Version 2**.
+
+The core Student Management functionality, Course Portal, Admission Management, database structure, CSV export functionality, and feedback system are implemented.
+
+Some options, such as **Payment Work** and **Forgot Password**, are reserved for future development.
+
+---
+
+# 🔮 Future Development
+
+Future versions may include:
+
+* Complete Payment Management
+* Payment Processing
+* Payment History
+* Payment Status Management
+* Forgot Password Functionality
+* Password Reset System
+* Improved Authentication
+* Additional Reports
+* Improved Validation
+* Enhanced Error Handling
+* Additional Database Features
+
+---
+
+# 👨‍💻 Author
 
 **Subham Thakur**
 
 Python Full Stack Development Learner
-Interested in Python, Django, Web Development, Databases, and Generative AI.
+
+### Interests
+
+* Python
+* Django
+* SQLite
+* Web Development
+* Generative AI
+* Software Development
+
+---
+
+# 📜 Version History
+
+| Version            | Status       | Major Changes                         |
+| ------------------ | ------------ | ------------------------------------- |
+| `1.x`              | Previous     | Basic Student Management System       |
+| `2.0 Beta`         | Previous     | Course Portal and Feedback System     |
+| **`2.0 - Stable`** | **✅ Stable** | **Final Stable Release of Version 2** |
+
+---
+
+## 🎉 Version 2.0 - Stable
+
+**Student Management System — Stable Release**
+
+> Built with Python, SQLite, OOP, and continuous learning.

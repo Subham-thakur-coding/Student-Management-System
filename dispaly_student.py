@@ -1,5 +1,6 @@
 import sqlite3
 from db_config import Database
+from autid_log import add_audit_log
 class Display_student:
     
     def __init__(self):
@@ -27,6 +28,8 @@ class Display_student:
                     """)
         
         students = cursor.fetchall()
+        con.commit()
+        add_audit_log("STUDENT DETAILS VIEW","Student details view ")
         con.close()
         
         if not students:
@@ -45,7 +48,7 @@ class Display_student:
             f"{'Degree':<15}"
             f"{'Course':<20}"
             f"{'Duration':<10}"
-            f"{'Status':<2}"
+            f"{'Admission':<2}"
         )
         
         print("-" * 120)
@@ -62,3 +65,6 @@ class Display_student:
                 f"{duration if duration else 'N/A':<12}"
                 f"{status if status else 'N/A':<2}\n"
             )
+            
+# object creation
+obj_view_student_details = Display_student()

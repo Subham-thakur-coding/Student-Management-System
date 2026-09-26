@@ -1,6 +1,7 @@
 from display_course import Display_Course
 from search_course import Search_Couse
 from update_course_topic import Course_Topic
+from authorization import require_permission
 class Course_menu:
     def __init__(self) -> None:
         self.display= Display_Course()
@@ -8,7 +9,8 @@ class Course_menu:
         self.topic= Course_Topic()
     # Menu
     def course_menu(self):
-        
+        if not require_permission("course"):
+            return
         while True:
             print("-"*50)
             print("\n*********** Welcome to Course Portal ***********\n")
@@ -16,7 +18,7 @@ class Course_menu:
             print("1. Dispaly Courses\n")
             print("2. Search Courses\n")
             print("3. Modify Courses Topics\n")
-            print("4. Back to Main Menu\n")
+            print("4. Back to Previous Menu\n")
             print("-"*20)
             
             choice: int = int(input("Enter your choice[1-4]: "))
@@ -33,3 +35,5 @@ class Course_menu:
                 print("-"*20)
                 print("Invalid choice. TRY AGAIN!")
                 print("-"*20)
+                
+Obj_course_menu = Course_menu()

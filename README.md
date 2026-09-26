@@ -1,294 +1,486 @@
 # 🎓 Student Management System
 
-A **menu-driven Student Management System** built using **Python and SQLite**.
+> **A modular, role-aware, database-driven Student Management System built with Python, OOP and SQLite.**
 
-This project demonstrates practical implementation of **Object-Oriented Programming, SQLite database management, CRUD operations, CSV handling, input validation, modular programming, context managers, and database relationships**.
-
----
-
-# 🚀 Version 2.0 - Stable
-
-**Status:** ✅ Stable Release
-**Version:** `2.0 - Stable`
-**Technology:** Python + SQLite
-**Project Type:** Console-Based Database Application
-
-Version 2.0 is the stable release of the second major development phase of the project.
-
-This version includes **Student Management, Course Management, Admission Management, Payment Database Structure, Database-to-CSV Export, Admin Authentication, and Feedback Management**.
+[![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![Version](https://img.shields.io/badge/Version-3.0.0%20Beta-orange?style=for-the-badge)](#-version-300-beta)
+[![Status](https://img.shields.io/badge/Status-Active%20Development-2ea44f?style=for-the-badge)](#-roadmap)
 
 ---
 
-# ✨ Features
+## ✨ What is this project?
 
-## 🔐 Admin Authentication
+This project started as a simple **Python + SQLite student CRUD application** and gradually evolved into a more structured console-based management system.
 
-The system provides an authentication system for administrators.
+The goal is not only to store student data, but to simulate how different departments can work with the same database while following controlled access, validation, auditing and modular workflows.
 
-Features include:
-
-* Admin Login
-* Add Admin
-* Login Validation
-* Default Admin Account
-* Admin Data Handling
-
----
-
-# 👨‍🎓 Student Management
-
-The core Student Management functionality includes:
-
-* Add Student
-* Display Student
-* Search Student
-* Update Student
-* Delete Student
-* Automatic Student ID generation
-* Student course assignment
-* Automatic admission record creation
-
-Student information includes:
-
-* Student ID
-* Student Name
-* Date of Birth
-* Student Address
-* Student Education
-* Course ID
-
----
-
-# 📚 Course Portal
-
-The **Course Portal** provides course-related management functionality.
-
-### Available Options
-
-* Display Courses
-* Search Course
-* Update Course Topic
-* Return to Main Menu
-
-Course information includes:
-
-* Course ID
-* Course Name
-* Course Duration
-* Course Topic
-
-The Course ID connects `student_details` with `student_course`.
-
----
-
-# 🎓 Admission / Payment Portal
-
-The application contains a separate **Admission / Payment Portal**.
+### 🧭 Project evolution
 
 ```text
-Admission / Payment Portal
-│
-├── 1. Admission Work
-│   ├── Display All Admission Details
-│   └── Modify Admission Details
-│
-├── 2. Payment Work
-│   └── Coming Soon
-│
-└── 3. Back to Main Menu
-```
-
-## Admission Work
-
-The Admission Work section provides:
-
-* Display All Admission Details
-* Modify Admission Details
-* Update Admission Status
-
-Supported admission statuses:
-
-```text
-Pending
-Approved
-Rejected
+Simple CRUD
+    ↓
+Authentication + Validation
+    ↓
+Course Management
+    ↓
+Feedback + File Handling
+    ↓
+Role-Based Access Control
+    ↓
+Payment Management
+    ↓
+Account Management
+    ↓
+Audit Logging
+    ↓
+3.0.0 Beta — Multi-module Management System
+    ↓
+Future: Workflow / Queue / External User Interface
 ```
 
 ---
 
-# 💳 Payment Details
+# 🚀 Current Release — v3.0.0 Beta
 
-Version 2.0 introduces a new **`payment_details`** table to prepare the application for future payment management.
+**3.0.0 Beta is the point where the project moves beyond a basic student CRUD program and starts behaving like a small role-based management application.**
 
-### `payment_details`
+### 🔥 Major additions in 3.0.0 Beta
 
-| Column           | Description        |
-| ---------------- | ------------------ |
-| `payment_id`     | Unique Payment ID  |
-| `payment_status` | Payment status     |
-| `amount`         | Payment amount     |
-| `student_id`     | Related Student ID |
-
-The **Payment Work** option is currently reserved for future development.
-
----
-
-# 📊 Export Table to CSV
-
-The **Export Table to CSV** feature allows database table information to be exported into CSV files.
-
-### Process
-
-1. Select **Export Table to CSV** from the Main Menu.
-2. The application displays the available database tables.
-3. Select the required table.
-4. The selected table data is exported to a CSV file.
-5. Column names are included automatically.
-6. If the CSV file already exists, the application does not overwrite it.
-
-### Available Database Tables
-
-```text
-1. user_auth
-2. student_course
-3. student_details
-4. student_admission
-5. payment_details
-```
-
-Example exports:
-
-```text
-user_auth → user_auth.csv
-student_course → student_course.csv
-student_details → student_details.csv
-student_admission → student_admission.csv
-payment_details → payment_details.csv
-```
+| Area | 2.0.0 Stable | 3.0.0 Beta |
+|---|---|---|
+| Student CRUD | ✅ | ✅ |
+| Course management | ✅ | ✅ |
+| Authentication | ✅ | ✅ |
+| Input validation | ✅ | ✅ |
+| Feedback CSV | ✅ | ✅ |
+| Payment management | Basic database support | 🆕 Dedicated Payment Portal |
+| User roles | ❌ | 🆕 Admin / Employee |
+| Authorization | ❌ | 🆕 Permission-based access |
+| User session | ❌ | 🆕 Centralized session state |
+| Audit log | ❌ | 🆕 Login / logout / data activity tracking |
+| Account management | ❌ | 🆕 Admin account controls |
+| Password change | ❌ | 🆕 Forgot/change password workflow |
+| User ID change | ❌ | 🆕 Account identifier modification |
+| Admin/user creation | Basic authentication setup | 🆕 Role-aware account creation |
+| Dynamic main menu | ❌ | 🆕 Menu changes according to role |
+| Modular portals | Partial | 🆕 Student / Course / Admission / Payment / Account / Audit |
+| Database model | Multi-table | Expanded with audit + role data |
 
 ---
 
-# 📝 Feedback System
+# 🕰️ The Story of the Project
 
-The application provides a feedback option when the user chooses to exit the program.
+This section documents **how the project grew version by version**, so a viewer can understand the development journey instead of seeing only the latest code.
 
-The feedback system:
+## 🌱 Version 1 — The Foundation
 
-* Accepts user feedback
-* Stores feedback in `feedback.csv`
-* Uses CSV file handling
-* Uses a context manager for file operations
-* Adds the CSV header when required
+The project began as a learning-focused Student Management System.
 
-Example:
+### Core goal
+Build a working application using:
 
-```text
-Feedback :
-System is easy to use.
-```
+- Python
+- Functions
+- OOP
+- SQLite
+- SQL CRUD operations
+- Input validation
 
-> `feedback.csv` is a CSV file and is **not a SQLite database table**.
+### Main capabilities
 
----
+- Add students
+- Display students
+- Search students
+- Update students
+- Delete students
+- Store data in SQLite
+- Validate user input
+- Create relationships between student and course/admission data
 
-# 🔑 Forgot Password
-
-The Main Menu includes:
-
-```text
-9. Forgot Password
-```
-
-The current functionality displays:
-
-```text
-Coming Soon!
-```
-
-This feature is reserved for future authentication improvements.
+**Focus:** Learn the fundamentals of connecting Python with a relational database.
 
 ---
 
-# 🗄️ Database Structure
+## 📘 Version 2.0 Beta — Better Structure
 
-The application uses **SQLite** as its database.
+The second generation focused on expanding the original CRUD application.
 
-## Database Tables
+### Major changes
 
-| Table Name          | Purpose                                |
-| ------------------- | -------------------------------------- |
-| `user_auth`         | Stores administrator login credentials |
-| `student_course`    | Stores course information              |
-| `student_details`   | Stores student information             |
-| `student_admission` | Stores admission information           |
-| `payment_details`   | Stores payment information             |
+- Introduced a dedicated **Course Management Panel**
+- Added course searching
+- Added course topic management
+- Improved student/course database relationships
+- Expanded validation
+- Improved modularity
+- Added more structured database operations
+
+**Focus:** Move from a simple CRUD script toward a multi-module application.
 
 ---
 
-## 🔗 Database Relationships
+## 🧪 Version 2.2 Beta — Feature Expansion
+
+The project continued to evolve with additional database and usability features.
+
+### Highlights
+
+- Expanded admission-related operations
+- Improved course handling
+- Added payment-related database support
+- Added feedback collection
+- Improved CSV/file handling
+- Continued refactoring and bug fixing
+
+**Focus:** Make the application represent more realistic student-management operations.
+
+---
+
+## 🏁 Version 2.0.0 Stable — The Stable Baseline
+
+The stable 2.0 generation established the foundation used by the next major version.
+
+### Stable capabilities
+
+- Student Management
+- Course Management
+- Admission Management
+- Authentication
+- SQLite database
+- SQL CRUD operations
+- Input validation
+- CSV feedback storage
+- Context-manager based file handling
+- Modular Python files
+
+At this stage, the application was primarily a **data-management system**.
+
+### The limitation that led to v3
+
+Although the application had multiple modules, access control was not yet separated by user role.
+
+The next logical step was to answer:
+
+> **Who is allowed to do what?**
+
+That question became the foundation of Version 3.
+
+---
+
+# 🧠 Version 3.0.0 Beta — From CRUD to Controlled Access
+
+Version 3 introduces an important architectural change:
+
+```text
+              ┌─────────────────────┐
+              │    Authentication   │
+              └──────────┬──────────┘
+                         ↓
+              ┌─────────────────────┐
+              │    User Session     │
+              └──────────┬──────────┘
+                         ↓
+              ┌─────────────────────┐
+              │ Authorization Layer │
+              └──────────┬──────────┘
+                         ↓
+       ┌─────────┬────────┼─────────┬──────────┐
+       ↓         ↓        ↓         ↓          ↓
+    Student   Course   Admission  Payment   Account
+       │         │        │         │          │
+       └─────────┴────────┴─────────┴──────────┘
+                         ↓
+                 SQLite Database
+                         ↓
+                    Audit Logs
+```
+
+---
+
+# 🔐 Role-Based Access Control
+
+The application now contains a dedicated authorization layer.
+
+### 👑 Admin
+
+The current authorization configuration gives the **admin** access to:
+
+- Student Management
+- Course Management
+- Admission Management
+- Payment Management
+- Account Management
+- Audit Logs
+
+### 👤 Employee
+
+The current authorization configuration gives an **employee** access to:
+
+- Student Management
+- Course Management
+
+This is implemented through a centralized permission map rather than scattering role checks throughout every operation.
+
+```python
+PERMISSIONS = {
+    "admin": {
+        "student",
+        "course",
+        "admission",
+        "payment",
+        "account",
+        "audit"
+    },
+
+    "employee": {
+        "student",
+        "course"
+    }
+}
+```
+
+---
+
+# 🧩 Modular Portal Architecture
+
+The main menu now behaves according to the logged-in user's role.
+
+### 🧑‍🎓 Student Portal
+
+- Add student
+- Display students
+- Search student
+- Update student
+- Delete student
+
+### 📚 Course Portal
+
+- Display courses
+- Search courses
+- Modify course topics
+
+### 📝 Admission Portal
+
+- Display admission details
+- Modify admission status
+
+### 💳 Payment Portal
+
+- Display payment records
+- Modify payment details
+- Validate payment status
+- Validate amount
+- Validate payment method
+- Automatically record payment date/time
+
+### ⚙️ Account Portal
+
+- Add user/admin account
+- Change user ID
+- Change password
+
+### 🧾 Audit Portal
+
+- View recorded system activities
+- Track user
+- Track action
+- Track description
+- Track timestamp
+
+---
+
+# 🧾 Audit Logging
+
+Version 3 introduces a dedicated `audit_log` table.
+
+```text
+audit_log
+├── log_id
+├── user_id
+├── action
+├── description
+└── log_time
+```
+
+The system records activities such as:
+
+- Login
+- Logout
+- Student creation
+- Payment updates
+- Admission updates
+- Password changes
+- Account-related operations
+- Data viewing activities implemented by the modules
+
+This creates a basic activity trail for the application.
+
+---
+
+# 👤 User Session Management
+
+Version 3 introduces a centralized `UserSession` class.
+
+The session keeps track of:
+
+```text
+Current User
+Current Role
+```
+
+This information is then used by the authorization layer to determine which modules the current user can access.
+
+---
+
+# 💳 Payment Management
+
+Payment functionality is now exposed through its own portal.
+
+Payment records contain:
+
+- Student ID
+- Payment ID
+- Amount
+- Payment status
+- Payment method
+- Payment date/time
+
+Supported payment methods are validated by the application, including:
+
+- Cash
+- UPI
+- Card
+- Net Banking
+
+Payment activity automatically records the current date and time.
+
+---
+
+# 🔑 Account & Password Management
+
+The Account Portal introduces administrative account operations.
+
+### Available operations
+
+- Add user account
+- Change user ID
+- Change password
+- Validate account credentials
+- Record account activity in audit logs
+
+The password-change workflow also checks:
+
+- User ID
+- Password format
+- Confirmation password
+- Final confirmation before database update
+
+---
+
+# 🗄️ Database Architecture
+
+The current database is built around multiple related SQLite tables.
 
 ```text
 ┌────────────────────┐
-│   student_course   │
-│                    │
-│ course_id (PK)     │
-│ course_name        │
-│ course_duration    │
-│ course_topic       │
+│     user_auth      │
+│ user_id            │
+│ password           │
+│ user_role          │
 └─────────┬──────────┘
           │
-          │ course_id
-          ▼
+          │ session / authorization
+          ↓
 ┌────────────────────┐
-│   student_details  │
-│                    │
-│ student_id (PK)    │
+│  student_details   │
+│ student_id         │
 │ student_name       │
-│ student_dob        │
-│ student_adress     │
-│ student_education  │
-│ course_id (FK)     │
+│ DOB                │
+│ address            │
+│ education          │
+│ course_id          │
+│ student_status     │
 └─────────┬──────────┘
           │
-     ┌────┴─────┐
-     │          │
-     ▼          ▼
-┌────────────┐  ┌─────────────────┐
-│ student_   │  │ payment_details │
-│ admission  │  │                 │
-│            │  │ payment_id (PK) │
-│ admission_ │  │ student_id (FK) │
-│ id (PK)    │  │ payment_status  │
-│ student_id │  │ amount          │
-│ (FK)       │  └─────────────────┘
-│ admission_ │
-│ status     │
-└────────────┘
+     ┌────┴───────────────┐
+     ↓                    ↓
+┌───────────────┐   ┌──────────────────┐
+│ student_course│   │student_admission │
+│ course_id     │   │ admission_id     │
+│ course_name   │   │ student_id       │
+│ duration      │   │ status           │
+│ topic         │   └──────────────────┘
+└───────────────┘
+          │
+          ↓
+┌──────────────────┐
+│ payment_details  │
+│ student_id       │
+│ payment_id       │
+│ amount           │
+│ status           │
+│ method           │
+│ date/time        │
+└──────────────────┘
+
+┌──────────────────┐
+│    audit_log     │
+│ log_id           │
+│ user_id          │
+│ action           │
+│ description      │
+│ timestamp        │
+└──────────────────┘
 ```
-
-### Foreign Key Relationships
-
-* `student_details.course_id` → `student_course.course_id`
-* `student_admission.student_id` → `student_details.student_id`
-* `payment_details.student_id` → `student_details.student_id`
 
 ---
 
-# 📁 Project Structure
+# 🛡️ Validation Layer
+
+Input validation remains an important part of the application.
+
+The validation module handles fields such as:
+
+- Student name
+- Date of birth
+- Address
+- Qualification
+- Course name
+- Course duration
+- Course topic
+- User ID
+- Password
+- Status
+- Payment amount
+- Payment method
+- Menu choices
+
+Regular expressions and dedicated validation functions are used to keep invalid input away from the database operations.
+
+---
+
+# 🧱 Project Architecture
+
+The project is intentionally divided into smaller modules instead of placing the entire application inside one Python file.
 
 ```text
 student_database_sqlite/
 │
 ├── main.py
+├── main_menu.py
 ├── db_config.py
-├── operation.py
 ├── validation.py
 │
-├── dispaly_student.py
-├── search_student.py
+├── authorization.py
+├── user_session.py
+├── autid_log.py
+│
+├── student_menu.py
+├── add_student.py
 ├── student_update.py
-├── update_personal.py
-├── update_all_details.py
+├── search_student.py
+├── dispaly_student.py
 ├── delete.py
 │
 ├── course_menu.py
@@ -296,254 +488,293 @@ student_database_sqlite/
 ├── search_course.py
 ├── update_course_topic.py
 │
-├── admission_payment_menu.py
 ├── admission_menu.py
 ├── display_admission.py
 ├── modify_admission.py
 │
-├── table_csv.py
-├── feedback.py
+├── payment_menu.py
+├── display_payment.py
+├── update_payment.py
 │
-├── student_DB.db
+├── account_menu.py
+├── add_admin.py
+├── modify_user_id.py
+├── forgot_password.py
+│
+├── feedback.py
 ├── feedback.csv
 ├── student_details.csv
 │
-├── .gitignore
 └── README.md
 ```
 
+> File names reflect the current 3.0.0 beta implementation.
+
 ---
 
-# 🛠️ Technologies Used
+# 🛠️ Technology Stack
 
-* **Python 3**
-* **SQLite3**
-* **CSV**
-* **Object-Oriented Programming**
-* **Regular Expressions**
-* **Context Managers**
-* **Exception Handling**
-* **CRUD Operations**
-* **File Handling**
-* **SQL**
-* **Foreign Keys**
-* **Modular Programming**
+| Technology | Used For |
+|---|---|
+| 🐍 **Python** | Core application |
+| 🗃️ **SQLite** | Database |
+| 🔎 **SQL** | CRUD, relationships and queries |
+| 🧱 **OOP** | Modular application design |
+| 🔐 **Authorization** | Role-based permissions |
+| 👤 **Session Management** | Current user/role state |
+| 🧾 **Audit Logging** | Activity tracking |
+| 🧪 **Regex / Validation** | Input validation |
+| 📄 **CSV** | Feedback and data handling |
+| 🕒 **datetime** | Payment activity timestamps |
 
 ---
 
 # ▶️ How to Run
 
-## 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/YOUR-USERNAME/Student-Management-System.git
 ```
 
-## 2. Open the Project
+### 2. Open the project
 
 ```bash
-cd student_database_sqlite
+cd Student-Management-System
 ```
 
-## 3. Run the Application
+### 3. Run the application
 
 ```bash
 python main.py
 ```
 
-The application creates the required SQLite database tables when the database is initialized.
+The application will create/use the SQLite database and initialize the required tables.
 
 ---
 
-# 🔑 Default Admin Account
+# 🔑 Default Login
 
-The application provides a default administrator account:
+The current database initialization contains a default account:
 
 ```text
-User ID: admin
-Password: admin123
+User ID  : admin
+Password : admin123
+```
+
+> ⚠️ This credential is intended for local development/learning. Change it before using the project in any real environment.
+
+---
+
+# 🧪 Version Comparison
+
+## 2.0.0 Stable → 3.0.0 Beta
+
+### Architecture
+
+**2.0.0**
+
+```text
+Main Program
+     ↓
+Student / Course / Admission
+     ↓
+SQLite
+```
+
+**3.0.0 Beta**
+
+```text
+Authentication
+      ↓
+User Session
+      ↓
+Authorization
+      ↓
+Role-based Modules
+      ↓
+SQLite
+      ↓
+Audit Trail
+```
+
+### What changed?
+
+**2.0.0 was mainly about managing data.**
+
+**3.0.0 Beta adds control around that data.**
+
+That means the project moved from:
+
+> **“Can the application store and modify student information?”**
+
+toward:
+
+> **“Which user can access which part of the application, and what activity happened?”**
+
+That architectural shift is the main story of the 3.0.0 release.
+
+---
+
+# 📈 Development Progress
+
+```text
+Version 1
+│
+├── Python fundamentals
+├── SQLite
+├── CRUD
+└── Validation
+        │
+        ▼
+Version 2.0
+│
+├── Course Management
+├── Admission Management
+├── Feedback
+├── CSV / Context Manager
+└── Better modular structure
+        │
+        ▼
+Version 2.2 Beta
+│
+├── Feature expansion
+├── Payment support
+├── Database improvements
+└── Workflow improvements
+        │
+        ▼
+Version 2.0.0 Stable
+│
+└── Stable multi-module baseline
+        │
+        ▼
+Version 3.0.0 Beta
+│
+├── RBAC
+├── User Sessions
+├── Permission Layer
+├── Audit Logs
+├── Payment Portal
+├── Account Portal
+├── Password Management
+└── Dynamic Role-Based Menu
+        │
+        ▼
+Future
+│
+├── Queue / workflow engine
+├── External student interaction
+├── Telegram integration
+├── Better security
+├── Reporting / analytics
+├── Django web version
+└── AI-assisted features
 ```
 
 ---
 
-# 📋 Main Menu
+# 🔮 Roadmap
 
-The Version 2.0 Stable application contains:
+The project is still evolving.
 
-```text
-==================================================
-                    MAIN MENU
-==================================================
+Possible future directions include:
 
-1. Add Student
-2. Display Student
-3. Search Student
-4. Update Student
-5. Delete Student
-6. Course Portal
-7. Admission / Payment Portal
-8. Export Table to CSV
-9. Forgot Password
-10. Log out
-```
-
----
-
-# 📚 Course Portal Menu
-
-```text
---------------------------------------------------
-                  Course Portal
---------------------------------------------------
-
-1. Display Courses
-2. Search Course
-3. Update Course Topic
-4. Back to Main Menu
-```
+- [ ] Improve password security with hashing
+- [ ] Strengthen authentication and authorization
+- [ ] Add more granular department permissions
+- [ ] Introduce a proper admission → payment → faculty workflow
+- [ ] Add queue-based processing
+- [ ] Add external student request handling
+- [ ] Telegram bot integration
+- [ ] Add reporting and analytics
+- [ ] Export reports to Excel
+- [ ] Build REST APIs
+- [ ] Migrate the system to Django
+- [ ] Add a web-based dashboard
+- [ ] Explore AI / Generative AI features
 
 ---
 
-# 🎓 Admission / Payment Portal Menu
+# 🧠 What I Learned From This Project
 
-```text
---------------------------------------------------
-          Admission / Payment Portal
---------------------------------------------------
+This project represents a progression from beginner-level Python programming toward application architecture.
 
-1. Admission Work
-2. Payment Work
-3. Back to Main Menu
-```
+### Python
 
-### Admission Menu
+- Functions
+- Classes
+- Objects
+- Methods
+- Modules
+- Exception handling
+- File handling
+- Context managers
+- Type hints
 
-```text
---------------------------------------------------
-                 Admission Menu
---------------------------------------------------
+### Database
 
-1. Display All Admission Details
-2. Modify Admission Details
-3. Back to Previous Menu
-```
+- SQLite
+- Table design
+- Primary keys
+- Foreign keys
+- CRUD
+- SQL queries
+- Joins
+- Transactions
+- Database relationships
 
----
+### Software Design
 
-# 🎯 Learning Objectives
+- Modular programming
+- Separation of responsibilities
+- Authentication
+- Authorization
+- Session management
+- Role-based access control
+- Audit trails
 
-This project was created as a practical Python project to understand how a database-driven application can be developed.
+### Practical Development
 
-The project demonstrates:
-
-* Python Classes and Objects
-* Object-Oriented Programming
-* SQLite Database Connectivity
-* SQL Queries
-* Database Tables
-* Primary Keys
-* Foreign Keys
-* Database Relationships
-* CRUD Operations
-* Input Validation
-* Regular Expressions
-* CSV File Handling
-* Context Managers
-* Exception Handling
-* Modular Programming
-* Database-to-CSV Export
-* Menu-Driven Application Development
+- Debugging
+- Refactoring
+- Versioning
+- Git/GitHub
+- Feature-based development
+- Incremental architecture
 
 ---
 
-# 🔄 Version 2.0 Highlights
+# 📌 Current Status
 
-### Added
+> 🟠 **Version 3.0.0 Beta — Active Development**
 
-* ✅ Course Portal
-* ✅ Course Search
-* ✅ Course Topic Management
-* ✅ Admission Management
-* ✅ Admission Status Modification
-* ✅ Admission / Payment Portal
-* ✅ `payment_details` Table
-* ✅ Export Table to CSV
-* ✅ Database Table Selection
-* ✅ Duplicate CSV Protection
-* ✅ Feedback CSV System
-* ✅ Context Manager for Feedback
-* ✅ Forgot Password Menu Option
+This release is functional but still under development. Some areas are intentionally being prepared for the next architectural stage.
 
-### Maintained
-
-* ✅ Student CRUD Operations
-* ✅ Admin Authentication
-* ✅ Student Validation
-* ✅ SQLite Database
-* ✅ Course Assignment
-* ✅ Modular Project Structure
-
----
-
-# 📌 Project Status
-
-## ✅ Version 2.0 - Stable
-
-Version 2.0 is the **stable release of Version 2**.
-
-The core Student Management functionality, Course Portal, Admission Management, database structure, CSV export functionality, and feedback system are implemented.
-
-Some options, such as **Payment Work** and **Forgot Password**, are reserved for future development.
-
----
-
-# 🔮 Future Development
-
-Future versions may include:
-
-* Complete Payment Management
-* Payment Processing
-* Payment History
-* Payment Status Management
-* Forgot Password Functionality
-* Password Reset System
-* Improved Authentication
-* Additional Reports
-* Improved Validation
-* Enhanced Error Handling
-* Additional Database Features
+The project should be viewed as a **learning-driven software project**, where each version represents a new stage of understanding and implementation.
 
 ---
 
 # 👨‍💻 Author
 
-**Subham Thakur**
+### Subham Thakur
 
-Python Full Stack Development Learner
+**Python Full Stack Development Learner**
 
-### Interests
+Interested in:
 
-* Python
-* Django
-* SQLite
-* Web Development
-* Generative AI
-* Software Development
+`Python` · `Django` · `SQL` · `Web Development` · `AI` · `Generative AI`
 
 ---
 
-# 📜 Version History
+## ⭐ If You Find This Project Interesting
 
-| Version            | Status       | Major Changes                         |
-| ------------------ | ------------ | ------------------------------------- |
-| `1.x`              | Previous     | Basic Student Management System       |
-| `2.0 Beta`         | Previous     | Course Portal and Feedback System     |
-| **`2.0 - Stable`** | **✅ Stable** | **Final Stable Release of Version 2** |
+This repository represents the complete learning journey from a simple Python CRUD application toward a more structured management system.
+
+**Star ⭐ the repository and follow the development journey.**
 
 ---
 
-## 🎉 Version 2.0 - Stable
-
-**Student Management System — Stable Release**
-
-> Built with Python, SQLite, OOP, and continuous learning.
+> 💡 **Built step by step. Improved version by version.**
+>
+> **The code is the project — the version history is the story.**

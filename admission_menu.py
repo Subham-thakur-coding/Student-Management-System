@@ -1,17 +1,20 @@
 from display_admission import Display_admission
 from modify_admission import Modify_admission
+from authorization import require_permission
 class Admission_Menu:
     def __init__(self) -> None:
         self.display= Display_admission()
         self.modify= Modify_admission()
     # logic for admission menu
     def admission_menu(self):
+        if not require_permission("admission"):
+            return
         while True:
             print("*"*50)
-            print("\n---------------- Welcome to Admission Menu ----------------")
+            print("\n---------------- Welcome to Admission Portal ----------------")
             print("*"*50)
-            print("\n1. Display all admission details")
-            print("\n2. Modify Admission Details")
+            print("\n1. Display Admission details")
+            print("\n2. Modify Admission details")
             print("\n3. Back to Previous Menu")
             
             choice: int = int(input("\nEnter your choice: "))
@@ -23,3 +26,5 @@ class Admission_Menu:
                 break
             else:
                 print("Invalid choice!")
+                
+Obj_admision_menu = Admission_Menu()

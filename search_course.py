@@ -1,6 +1,6 @@
 import sqlite3
 from db_config import Database
-
+from autid_log import add_audit_log
 class Search_Couse:
     def __init__(self) -> None:
         self.db = Database()
@@ -18,6 +18,8 @@ class Search_Couse:
                     """,(course_id,))
         
         course = cursor.fetchone()
+        con.commit()
+        add_audit_log("COURSE SEARCH", f"{course_id}, course id details fetch database")
         if course == None:
             print(f"No course details found or no course added for course id: {course_id}")
             return False

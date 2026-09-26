@@ -1,7 +1,7 @@
 import sqlite3
 from db_config import Database
 from validation import Validation
-
+from autid_log import add_audit_log
 class Course_Topic:
     def __init__(self) -> None:
         self.db= Database()
@@ -49,8 +49,9 @@ class Course_Topic:
                     SET course_topic =?
                     WHERE course_id =?
                     """,(course_topic, course_id))
+        con.commit()
+        add_audit_log("COURSE TOPIC CHANGE",f"{course_id},course id, {course_topic} course topic updated into database.")
         try:
-            con.commit()
             print("\nChanges saved successfully!")
         except sqlite3.Error as e:
             con.close()

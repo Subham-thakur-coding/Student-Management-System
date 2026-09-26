@@ -1,6 +1,7 @@
 import sqlite3
 from db_config import Database
 from validation import Validation
+from autid_log import add_audit_log
 class Modify_admission:
     def __init__(self) -> None:
         self.db = Database()
@@ -38,8 +39,9 @@ class Modify_admission:
                     SET admission_status =?
                     WHERE student_id =?
                     """,(admission, student_id))
+        con.commit()
+        add_audit_log("ADMISSION STATUS UPDATED",f"{student_id} student id, {admission} status adeed into admission database")
         try:
-            con.commit()
             print("Data Update Successfully!")
         except sqlite3.Error as e:
             print(f"Database Error {e}")

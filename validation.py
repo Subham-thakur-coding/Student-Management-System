@@ -133,7 +133,7 @@ class Validation:
         # Must contain at least 4 alphabets
         alphabets = re.findall(r"[A-Za-z]", password)
 
-        # Must contain at least 4 digits
+        # Must contain at least 2 digits
         digits = re.findall(r"[0-9]", password)
 
         # Special characters except ! ; : ' &
@@ -142,7 +142,7 @@ class Validation:
         if len(alphabets) < 4:
             return False
 
-        if len(digits) < 4:
+        if len(digits) < 2:
             return False
 
         if len(special_characters) < 2:
@@ -160,6 +160,38 @@ class Validation:
         pattern = r"^[A-Za-z, ]+$"
 
         if re.fullmatch(pattern, course_topic):
+            return True
+
+        return False
+    
+
+        # ---------------- PAYMENT AMOUNT VALIDATION ----------------
+    @staticmethod
+    def validate_payment_amount(amount):
+
+        # Allows numbers like:
+        # 500
+        # 500.50
+        # 1000.25
+
+        pattern = r"^\d+(\.\d{1,2})?$"
+
+        if not re.fullmatch(pattern, amount):
+            return False
+
+        if float(amount) <= 0:
+            return False
+
+        return True
+
+
+    # ---------------- PAYMENT METHOD VALIDATION ----------------
+    @staticmethod
+    def validate_payment_method(payment_method):
+
+        pattern = r"^(Cash|UPI|Card|Net Banking)$"
+
+        if re.fullmatch(pattern, payment_method, re.IGNORECASE):
             return True
 
         return False

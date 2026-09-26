@@ -1,6 +1,6 @@
 import sqlite3
 from db_config import Database
-
+from autid_log import add_audit_log
 class Display_Course:
     def __init__(self):
         self.db = Database()
@@ -14,7 +14,9 @@ class Display_Course:
                     SELECT * FROM student_course
                     """)
         courses: list = cursor.fetchall()
-        
+        con.commit()
+        add_audit_log("COURSE DETAILS VIEW","Course details fetch from database")
+        con.close()
         if len(courses) == 0:
             print("No Course Found, add student first then course will automatically added!")
             con.close()

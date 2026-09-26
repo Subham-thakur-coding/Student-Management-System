@@ -24,3 +24,5 @@ class Feedback_CSV:
 
         print("\nThank you for your valuable feedback!")
         print("\n**************** We appreciate your time and effort in helping us improve our system. ****************")
+        
+Obj_feedback_CSV = Feedback_CSV()
